@@ -34,11 +34,7 @@ Samples = Base.classes.samples
 @app.route("/")
 def index():
     """Return the homepage."""
-    # Use Pandas to perform the sql query
-    stmt = db.session.query(Samples).statement
-    df = pd.read_sql_query(stmt, db.session.bind)
-    names = (list(df.columns)[2:])
-    return render_template("index.html",names=names)
+    return render_template("index.html")
 
 
 @app.route("/names")
